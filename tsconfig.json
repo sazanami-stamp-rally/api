@@ -10,7 +10,7 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true
     },
-    // "extends": "./tsconfig.paths.json",
+    "extends": "./tsconfig.paths.json",
     "include": ["src/**/*.ts", "src/*.ts"],
     "ts-node": {
         "esm": true,
