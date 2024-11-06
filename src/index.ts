@@ -1,6 +1,6 @@
 import express from 'express';
 import Logger from './logger';
-// import prisma from '@src/prisma';
+import prisma from '@src/prisma';
 import cors from 'cors';
 
 // Init
@@ -16,6 +16,23 @@ logger.info("サーバーを起動しています...");
 const configLogger = logger.getChild('config');
 // Config
 const port = process.env.PORT || DEFAULT_PORT;
+
+// Try to connect to the database
+// connect db
+const dbLogger = logger.getChild('db');
+dbLogger.info("データベースへの接続を試みます...");
+try {
+    await prisma.$connect();
+    // get db version with raw query
+    const result = await prisma.$queryRaw`SELECT version()` as [{ version: string }];
+    dbLogger.success("接続成功: " + result[0].version.split(" ").slice(0, 2).join(" "))
+    dbLogger.debug("raw: " + JSON.stringify(result));
+} catch (e) {
+    dbLogger.error("Failed to connect to database");
+    dbLogger.debug("Error: " + e);
+    process.exit(1);
+}
+
 
 // Init server
 app.use(express.json());
