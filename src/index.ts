@@ -33,7 +33,6 @@ try {
     process.exit(1);
 }
 
-
 // Init server
 app.use(express.json());
 configLogger.info('Express JSON parserを有効にしました');
