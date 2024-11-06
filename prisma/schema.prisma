@@ -12,3 +12,27 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id           String    @id @default(cuid())
+  display_name String
+  is_activated Boolean   @default(false)
+  Checkin      Checkin[]
+}
+
+model Booth {
+  id           String    @id @default(cuid())
+  display_name String
+  floor        Int
+  category     String
+  Checkin      Checkin[]
+}
+
+model Checkin {
+  id           String   @id @default(cuid())
+  user_id      String
+  booth_id     String
+  user         User     @relation(fields: [user_id], references: [id])
+  booth        Booth    @relation(fields: [booth_id], references: [id])
+  checkin_time DateTime @default(now())
+}
