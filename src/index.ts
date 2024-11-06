@@ -1,4 +1,7 @@
 import express from 'express';
+import Logger from './logger';
+
+
 
 const app = express();
 
