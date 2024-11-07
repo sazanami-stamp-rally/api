@@ -37,3 +37,5 @@ router.get('/displayName', hasUserId, async (req: Request, res: Response) => {
         res.status(resp.statusCode).json(resp.body);
     });
 })
+
+export default router;
