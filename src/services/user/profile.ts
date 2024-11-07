@@ -17,4 +17,14 @@ async function setUserDisplayName(userId: string, displayName: string) {
     });
 }
 
-export { setUserDisplayName };
+async function getUserDisplayName(userId: string) {
+    return await prisma.user.findUnique({
+        where: {
+            id: userId
+        }
+    }).then((user) => {
+        return user?.display_name;
+    });
+}
+
+export { setUserDisplayName, getUserDisplayName };
