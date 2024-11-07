@@ -9,6 +9,9 @@ async function handleCheckin(userId: string, boothId: string) {
         data: {
             user_id: userId,
             booth_id: boothId
+        }, include: { // ログをきれいにするのが主目的なので負荷になるなら消してもいいかも
+            booth: true,
+            user: true
         }
     }).then((checkin) => {
         return checkin;
