@@ -26,6 +26,8 @@ model Booth {
   display_name String
   floor        Int
   category     String
+  cooldown     Int
+  flags        String[]
   Checkin      Checkin[]
   Cooldown     Cooldown[]
 }
