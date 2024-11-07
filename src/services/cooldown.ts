@@ -57,4 +57,47 @@ async function canCheckin(userId: string, boothId: string) {
     });
 }
 
-export { setCooldown, getCooldown, canCheckin };
+async function sweepExpiredCooldowns() {
+    return await prisma.cooldown.deleteMany({
+        where: {
+            end_time: {
+                lt: new Date()
+            }
+        }
+    }).then((result) => {
+        return result;
+    });
+}
+
+async function clearCooldown(userId: string, boothId: string) {
+    return await prisma.cooldown.deleteMany({
+        where: {
+            user_id: userId,
+            booth_id: boothId
+        }
+    }).then((result) => {
+        return result;
+    });
+}
+
+async function clearCooldownsByUser(userId: string) {
+    return await prisma.cooldown.deleteMany({
+        where: {
+            user_id: userId
+        }
+    }).then((result) => {
+        return result;
+    });
+}
+
+async function clearCooldownsByBooth(boothId: string) {
+    return await prisma.cooldown.deleteMany({
+        where: {
+            booth_id: boothId
+        }
+    }).then((result) => {
+        return result;
+    });
+}
+
+export { setCooldown, getCooldown, canCheckin, sweepExpiredCooldowns, clearCooldown, clearCooldownsByUser, clearCooldownsByBooth };
