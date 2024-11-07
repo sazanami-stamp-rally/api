@@ -1,10 +1,11 @@
-// import { IncomingHttpHeaders } from "http";
+import * as _express from 'express'; // モジュールとして認識させるためのインポート
 
-declare module 'http' {
-    interface IncomingHttpHeaders {
-        userId?: string;
+declare global {
+  namespace Express {
+    interface Request {
+      userId?: string
     }
+  }
 }
 
-export { }; // モジュールとして認識させるためのエクスポート
-
+export {}; // モジュールとして認識させるためのエクスポート
