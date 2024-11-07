@@ -2,7 +2,7 @@ import { Router, Request, Response } from 'express';
 import Logger from '@src/logger';
 import hasUserId from '@src/routes/middlewares/validation/hasUserId';
 import { getUserDisplayName, setUserDisplayName } from '@src/services/user/profile';
-import { internalServerErrorResponse, requiredFieldMissingResponse } from '@src/models/responses';
+import { internalServerErrorResponse, okResponse, requiredFieldMissingResponse } from '@src/models/responses';
 
 const router = Router();
 const logger = new Logger();
@@ -17,8 +17,9 @@ router.post('/displayName', hasUserId, async (req: Request, res: Response) => {
         res.status(resp.statusCode).json(resp.body)
     }
     setUserDisplayName(req.userId!, req.body.displayName).then((user) => {
-        logger.info(`ユーザー ${req.userId} がdisplay_nameを ${req.body.displayName} に変更しました`);
-        res.status(200).json(user);
+        logger.info(`ユーザー ${req.userId} がdisplay_nameを ${user.display_name} に変更しました`);
+        const resp = okResponse();
+        res.status(resp.statusCode).json(resp.body);
     }).catch((err) => {
         logger.error(err);
         const resp = internalServerErrorResponse();
