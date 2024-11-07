@@ -1,6 +1,7 @@
 import express from 'express';
 import Logger from './logger';
 import prisma from '@src/prisma';
+import redis from '@src/ioredis';
 import cors from 'cors';
 
 import router from './routes';
@@ -20,9 +21,9 @@ const configLogger = logger.getChild('config');
 const port = process.env.PORT || DEFAULT_PORT;
 
 // Try to connect to the database
-// connect db
+// PostgreSQL
 const dbLogger = logger.getChild('db');
-dbLogger.info("データベースへの接続を試みます...");
+dbLogger.info("PostgreSQLへの接続をテストしています...");
 try {
     await prisma.$connect();
     // get db version with raw query
@@ -34,6 +35,17 @@ try {
     dbLogger.debug("Error: " + e);
     process.exit(1);
 }
+
+// Redis
+dbLogger.info("Redisへの接続をテストしています...");
+await redis.lolwut().then((res) => {
+    // resに改行が含まれるので、改行を削除
+    dbLogger.success("接続成功: " + res.replace(/\r?\n/g, ''));
+}).catch((e) => {
+    dbLogger.error("Failed to connect to Redis");
+    dbLogger.debug("Error: " + e);
+    process.exit(1);
+})
 
 // Init server
 app.use(express.json());
@@ -56,6 +68,6 @@ logger.success('Expressサーバーの初期化が完了しました');
 
 
 app.listen(3000, () => {
-    logger.success(`サーバーが起動しました。使用ポート: ${port}`);
+    logger.success(`サーバーが起動しました🎉 使用ポート: ${port}`); 
 });
 
