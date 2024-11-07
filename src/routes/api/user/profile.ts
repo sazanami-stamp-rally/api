@@ -10,7 +10,7 @@ const logger = new Logger();
 logger.setTags(['api', 'user', 'profile']);
 
 // ユーザー情報(現時点ではdisplay_nameのみ)を更新
-router.post('/', hasUserId, async (req: Request, res: Response) => {
+router.post('/displayName', hasUserId, async (req: Request, res: Response) => {
     // hasUserIdミドルウェアを挟んでいる場合, req.userIdは存在することが保証されている
     if (!req.body.displayName) {
         const resp = requiredFieldMissingResponse(["displayName"])
@@ -26,7 +26,7 @@ router.post('/', hasUserId, async (req: Request, res: Response) => {
     });
 });
 
-router.get('/', hasUserId, async (req: Request, res: Response) => {
+router.get('/displayName', hasUserId, async (req: Request, res: Response) => {
     // hasUserIdミドルウェアを挟んでいる場合, req.userIdは存在することが保証されている
     getUserDisplayName(req.userId!).then((displayName) => {
         res.status(200).json({ displayName });
