@@ -15,7 +15,7 @@ export default function startCronJobs() {
     });
 
     // 期限切れのクールダウンを削除(10分ごと)
-    cron.schedule('*/10 * * * *', async () => {
+    cron.schedule('* * * * *', async () => {
         logger.info('期限切れのクールダウンを削除しています...');
         sweepExpiredCooldowns();
         logger.success('期限切れのクールダウンを削除しました');
