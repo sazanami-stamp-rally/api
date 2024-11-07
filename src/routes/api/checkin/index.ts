@@ -19,7 +19,7 @@ router.post('/:boothId', hasUserId, async (req, res) => {
     }
 
     if (!await canCheckin(req.userId!, boothId)) {
-        logger.info(`クールダウン中のチェックインが試行されました(UID: ${req.userId}, BID: ${boothId})`);
+        logger.info(`クールダウン中にチェックインが試行されました(UID: ${req.userId}, BID: ${boothId})`);
         res.status(403).json({
             message: 'クールダウンタイムが終了するまでは再度チェックインできません'
         });
