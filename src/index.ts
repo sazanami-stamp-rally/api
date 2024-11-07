@@ -3,6 +3,8 @@ import Logger from './logger';
 import prisma from '@src/prisma';
 import cors from 'cors';
 
+import router from './routes';
+
 // Init
 const app = express();
 const DEFAULT_PORT = 3000;
@@ -46,11 +48,12 @@ const corsOptions = {
 app.use(cors(corsOptions));
 configLogger.warn('全オリジンからのリクエストを許可しました !!for debug only!!');
 
+// Attach routes
+app.use(router);
+logger.info('ルーティングを設定しました');
+
 logger.success('Expressサーバーの初期化が完了しました');
 
-app.get('/', (req, res) => {
-    res.send('Hello World');
-});
 
 app.listen(3000, () => {
     logger.success(`サーバーが起動しました。使用ポート: ${port}`);
