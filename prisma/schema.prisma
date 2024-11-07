@@ -14,18 +14,20 @@ datasource db {
 }
 
 model User {
-  id           String    @id @default(cuid())
+  id           String     @id @default(cuid())
   display_name String?
-  is_activated Boolean   @default(false)
+  is_activated Boolean    @default(false)
   Checkin      Checkin[]
+  Cooldown     Cooldown[]
 }
 
 model Booth {
-  id           String    @id @default(cuid())
+  id           String     @id @default(cuid())
   display_name String
   floor        Int
   category     String
   Checkin      Checkin[]
+  Cooldown     Cooldown[]
 }
 
 model Checkin {
@@ -35,4 +37,13 @@ model Checkin {
   user         User     @relation(fields: [user_id], references: [id])
   booth        Booth    @relation(fields: [booth_id], references: [id])
   checkin_time DateTime @default(now())
+}
+
+model Cooldown {
+  id       String   @id @default(cuid())
+  user_id  String
+  booth_id String
+  end_time DateTime
+  user     User     @relation(fields: [user_id], references: [id])
+  booth    Booth    @relation(fields: [booth_id], references: [id])
 }
