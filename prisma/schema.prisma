@@ -26,7 +26,7 @@ model Booth {
   display_name      String
   floor             Int
   category          String
-  cooldown_duration Int        @default(900)
+  cooldown_duration Int        @default(900) // TODO: 900msになってしまってる
   flags             String[]   @default([])
   Checkin           Checkin[]
   Cooldown          Cooldown[]
