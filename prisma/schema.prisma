@@ -22,14 +22,14 @@ model User {
 }
 
 model Booth {
-  id           String     @id @default(cuid())
-  display_name String
-  floor        Int
-  category     String
-  cooldown     Int        @default(900)
-  flags        String[]
-  Checkin      Checkin[]
-  Cooldown     Cooldown[]
+  id                String     @id @default(cuid())
+  display_name      String
+  floor             Int
+  category          String
+  cooldown_duration Int        @default(900)
+  flags             String[]   @default([])
+  Checkin           Checkin[]
+  Cooldown          Cooldown[]
 }
 
 model Checkin {
