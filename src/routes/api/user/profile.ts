@@ -17,7 +17,7 @@ router.post('/displayName', hasUserId, async (req: Request, res: Response) => {
         res.status(resp.statusCode).json(resp.body)
     }
     setUserDisplayName(req.userId!, req.body.displayName).then((user) => {
-        logger.info(`ユーザー ${req.userId} がdisplay_nameを ${user.display_name} に変更しました`);
+        logger.info(`ユーザー ${req.userId} が表示名を ${user.display_name} に変更しました`);
         const resp = okResponse();
         res.status(resp.statusCode).json(resp.body);
     }).catch((err) => {
