@@ -18,7 +18,7 @@ router.post('/:boothId', hasUserId, async (req, res) => {
     }
 
     handleCheckin(req.userId!, boothId).then((checkin) => {
-        logger.info(`ユーザー ${req.userId} がブース ${boothId} にチェックインしました`);
+        logger.info(`ユーザー "${checkin.user.display_name}" がブース "${checkin.booth.display_name}" (${checkin.booth.floor}階) にチェックインしました`);
         const resp = okResponse();
         res.status(resp.statusCode).json(resp.body);
     }).catch((err) => {
