@@ -1,4 +1,4 @@
-import * as express from 'express'; // モジュールとして認識させるためのインポート
+import * as _express from 'express'; // モジュールとして認識させるためのインポート
 
 declare global {
     namespace Express {
