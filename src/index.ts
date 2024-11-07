@@ -5,6 +5,7 @@ import redis from '@src/ioredis';
 import cors from 'cors';
 
 import router from './routes';
+import startCronJobs from './cron';
 
 // Init
 const app = express();
@@ -46,6 +47,10 @@ await redis.lolwut().then((res) => {
     dbLogger.debug("Error: " + e);
     process.exit(1);
 })
+
+// Start scheduling cron jobs
+startCronJobs();
+logger.info('Cronジョブの実行をを開始しました');
 
 // Init server
 app.use(express.json());
