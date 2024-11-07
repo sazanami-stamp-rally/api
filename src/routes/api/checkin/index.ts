@@ -2,7 +2,7 @@ import { Router } from "express";
 import Logger from '@src/logger';
 import hasUserId from '@src/routes/middlewares/validation/hasUserId';
 import { handleCheckin, isBoothIdExist } from "@src/services/checkin";
-import { okResponse, notFoundResponse } from "@src/models/responses";
+import { okResponse, notFoundResponse, internalServerErrorResponse } from "@src/models/responses";
 
 const router = Router();
 const logger = new Logger();
@@ -20,6 +20,10 @@ router.post('/:boothId', hasUserId, async (req, res) => {
     handleCheckin(req.userId!, boothId).then((checkin) => {
         logger.info(`ユーザー ${req.userId} がブース ${boothId} にチェックインしました`);
         const resp = okResponse();
+        res.status(resp.statusCode).json(resp.body);
+    }).catch((err) => {
+        logger.error(err);
+        const resp = internalServerErrorResponse();
         res.status(resp.statusCode).json(resp.body);
     });
 });
