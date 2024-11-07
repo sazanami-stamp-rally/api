@@ -58,9 +58,10 @@ configLogger.info('Express JSON parserを有効にしました');
 
 // For debug only
 const corsOptions = {
-    origin: '*',
+    origin: 'http://localhost:5173',
     methos: "GET, POST, PUT, DELETE, OPTIONS",
-    optionsSuccessStatus: 200
+    optionsSuccessStatus: 200,
+    credentials: true
 }
 app.use(cors(corsOptions));
 configLogger.warn('全オリジンからのリクエストを許可しました !!for debug only!!');
