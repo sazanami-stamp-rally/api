@@ -27,3 +27,5 @@ router.post('/:boothId', hasUserId, async (req, res) => {
         res.status(resp.statusCode).json(resp.body);
     });
 });
+
+export default router;
