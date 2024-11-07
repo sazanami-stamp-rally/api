@@ -56,3 +56,5 @@ async function getUserRanking() {
 }
 
 // TODO: 複雑な要件を持つランキングを算出できるようにする
+
+export { getUserRanking };
