@@ -27,18 +27,18 @@ model Booth {
   floor        Int
   category     String
   flags        String[]     @default([])
-  Cooldown     Cooldown[]
   Checkpoint   Checkpoint[]
 }
 
 model Checkpoint {
-  id                String    @id @default(cuid())
+  id                String     @id @default(cuid())
   display_name      String? // Boothに紐付けられたCheckpointはそっちを参照するので
   floor             Int? // Boothに紐付けられたCheckpointはそっちを参照するので
   cooldown_duration Int
   booth_id          String?
-  booth             Booth?    @relation(fields: [booth_id], references: [id])
+  booth             Booth?     @relation(fields: [booth_id], references: [id])
   Checkin           Checkin[]
+  Cooldown          Cooldown[]
 }
 
 model Checkin {
@@ -51,10 +51,10 @@ model Checkin {
 }
 
 model Cooldown {
-  id       String   @id @default(cuid())
-  user_id  String
-  booth_id String
-  end_time DateTime
-  user     User     @relation(fields: [user_id], references: [id])
-  booth    Booth    @relation(fields: [booth_id], references: [id])
+  id            String     @id @default(cuid())
+  user_id       String
+  checkpoint_id String
+  end_time      DateTime
+  user          User       @relation(fields: [user_id], references: [id])
+  checkpoint    Checkpoint @relation(fields: [checkpoint_id], references: [id])
 }
