@@ -1,5 +1,6 @@
 import prisma from '@src/prisma';
 import Logger from '@src/logger';
+import { processCheckinAchievement } from './achivement';
 
 const logger = new Logger();
 logger.setTags(['service', 'checkin']);
@@ -21,6 +22,8 @@ async function handleCheckin(userId: string, checkpointId: string) {
   }).then((checkin) => {
     logger.info(`User ${userId} checked in at checkpoint ${checkpointId}`);
     return checkin;
+  }).then(() => {
+    processCheckinAchievement(userId, checkpointId);
   });
 }
 
