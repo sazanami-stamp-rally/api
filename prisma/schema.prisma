@@ -22,7 +22,7 @@ model User {
 }
 
 model Booth {
-  id           String       @id @default(cuid())
+  id           String       @id
   display_name String
   floor        Int
   category     String
