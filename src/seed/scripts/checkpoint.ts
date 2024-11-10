@@ -3,12 +3,12 @@ import csv from 'csv-parser';
 import { Checkpoint, PrismaClient } from '@prisma/client';
 
 export async function seed(rootPath: string): Promise<void> {
-  console.log('Seeding checkpoints_booth...');
+  console.log('Seeding checkpoints...');
   const prisma = new PrismaClient();
   const data = [] as Checkpoint[];
 
   await new Promise<void>((resolve, reject) => {
-    fs.createReadStream(`${rootPath}/datas/checkpoint_booth.csv`)
+    fs.createReadStream(`${rootPath}/datas/checkpoint.csv`)
       .pipe(csv())
       .on('data', (row) => {
         data.push({
@@ -28,7 +28,7 @@ export async function seed(rootPath: string): Promise<void> {
   });
 
   await prisma.checkpoint.createMany({ data });
-  console.log('Seeding checkpoints_booth completed!');
+  console.log('Seeding checkpoints completed!');
   await prisma.$disconnect();
 }
 
