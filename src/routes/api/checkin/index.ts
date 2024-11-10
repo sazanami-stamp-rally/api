@@ -9,9 +9,9 @@ const router = Router();
 const logger = new Logger();
 logger.setTags(['api', 'checkin']);
 
-router.post('/:checkpointId', hasUserId, async (req, res) => {
+router.post('/', hasUserId, async (req, res) => {
   // hasUserIdミドルウェアを挟んでいる場合, req.userIdは存在することが保証されている
-  const checkpointId = req.params.checkpointId;
+  const checkpointId = req.body.checkpointId as string;
   if (!await isCheckpointIdExist(checkpointId)) {
     const resp = notFoundResponse();
     res.status(resp.statusCode).json(resp.body);
