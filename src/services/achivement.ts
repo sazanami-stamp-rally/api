@@ -27,10 +27,12 @@ const achievementIds = {
 
 export async function processCheckinAchievement(userId: string, checkpointId: string) {
   // TODO: 効率化(獲得されうる実績のみを処理する)
-  
+
   const earnedAchievements = await getAchievements(userId).then((achievements) => {
     return achievements.map((achievement) => achievement.achievement_id);
   });
+
+  const checkpoint = await getCheckpoint(checkpointId);
 
   if (!earnedAchievements.includes(achievementIds["my-first-checkin"])) {
     processMyFirstCheckin(userId);
@@ -41,51 +43,87 @@ export async function processCheckinAchievement(userId: string, checkpointId: st
   }
 
   if (!earnedAchievements.includes(achievementIds["dont-exercise-in-a-stairs"])) {
-    processDontExerciseInAStairs(userId, checkpointId);
+    if (checkpoint!.floor === 1 || checkpoint!.floor === 8) {
+      // トリガーされたチェックポイントが1階または8階の場合のみ処理
+      processDontExerciseInAStairs(userId, checkpointId);
+    }
   }
 
   if (!earnedAchievements.includes(achievementIds["floor-master-0"])) {
-    processFloorMaster(userId, 0);
+    if (checkpoint!.floor === 0) {
+      // トリガーされたチェックポイントが0階の場合のみ処理
+      processFloorMaster(userId, 0);
+    }
   }
 
   if (!earnedAchievements.includes(achievementIds["floor-master-1"])) {
-    processFloorMaster(userId, 1);
+    if (checkpoint!.floor === 1) {
+      // トリガーされたチェックポイントが1階の場合のみ処理
+      processFloorMaster(userId, 1);
+    }
   }
 
   if (!earnedAchievements.includes(achievementIds["floor-master-2"])) {
-    processFloorMaster(userId, 2);
+    if (checkpoint!.floor === 2) {
+      // トリガーされたチェックポイントが2階の場合のみ処理
+      processFloorMaster(userId, 2);
+    }
   }
 
   if (!earnedAchievements.includes(achievementIds["floor-master-3"])) {
-    processFloorMaster(userId, 3);
+    if (checkpoint!.floor === 3) {
+      // トリガーされたチェックポイントが3階の場合のみ処理
+      processFloorMaster(userId, 3);
+    }
   }
 
   if (!earnedAchievements.includes(achievementIds["floor-master-4"])) {
-    processFloorMaster(userId, 4);
+    if (checkpoint!.floor === 4) {
+      // トリガーされたチェックポイントが4階の場合のみ処理
+      processFloorMaster(userId, 4);
+    }
   }
 
   if (!earnedAchievements.includes(achievementIds["floor-master-5"])) {
-    processFloorMaster(userId, 5);
+    if (checkpoint!.floor === 5) {
+      // トリガーされたチェックポイントが5階の場合のみ処理
+      processFloorMaster(userId, 5);
+    }
   }
 
   if (!earnedAchievements.includes(achievementIds["floor-master-6"])) {
-    processFloorMaster(userId, 6);
+    if (checkpoint!.floor === 6) {
+      // トリガーされたチェックポイントが6階の場合のみ処理
+      processFloorMaster(userId, 6);
+    }
   }
 
   if (!earnedAchievements.includes(achievementIds["floor-master-7"])) {
-    processFloorMaster(userId, 7);
+    if (checkpoint!.floor === 7) {
+      // トリガーされたチェックポイントが7階の場合のみ処理
+      processFloorMaster(userId, 7);
+    }
   }
 
   if (!earnedAchievements.includes(achievementIds["floor-master-8"])) {
-    processFloorMaster(userId, 8);
+    if (checkpoint!.floor === 8) {
+      // トリガーされたチェックポイントが8階の場合のみ処理
+      processFloorMaster(userId, 8);
+    }
   }
 
   if (!earnedAchievements.includes(achievementIds["food-master"])) {
-    processFoodMaster(userId);
+    if (checkpoint!.category === "food_and_drink") {
+      // トリガーされたチェックポイントが食事系の場合のみ処理
+      processFoodMaster(userId);
+    }
   }
 
   if (!earnedAchievements.includes(achievementIds["repeat-checkin-food"])) {
-    processRepeatCheckinFood(userId, checkpointId);
+    if (checkpoint!.category === "food_and_drink") {
+      // トリガーされたチェックポイントが食事系の場合のみ処理
+      processRepeatCheckinFood(userId, checkpointId);
+    }
   }
 
   if (!earnedAchievements.includes(achievementIds["rapid-checkin"])) {
