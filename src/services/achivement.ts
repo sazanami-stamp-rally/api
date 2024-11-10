@@ -25,23 +25,72 @@ const achievementIds = {
   "rapid-checkin": "rapid-checkin", // 前回のチェックインから3分以内にチェックイン: 気分やさん
 } as const;
 
-export function processCheckinAchievement(userId: string, checkpointId: string) {
+export async function processCheckinAchievement(userId: string, checkpointId: string) {
   // TODO: 効率化(獲得されうる実績のみを処理する)
-  processMyFirstCheckin(userId);
-  processContinuousCheckin(userId, checkpointId);
-  processDontExerciseInAStairs(userId, checkpointId);
-  processFloorMaster(userId, 0);
-  processFloorMaster(userId, 1);
-  processFloorMaster(userId, 2);
-  processFloorMaster(userId, 3);
-  processFloorMaster(userId, 4);
-  processFloorMaster(userId, 5);
-  processFloorMaster(userId, 6);
-  processFloorMaster(userId, 7);
-  processFloorMaster(userId, 8);
-  processFoodMaster(userId);
-  processRepeatCheckinFood(userId, checkpointId);
-  processRapidCheckin(userId);
+  
+  const earnedAchievements = await getAchievements(userId).then((achievements) => {
+    return achievements.map((achievement) => achievement.achievement_id);
+  });
+
+  if (!earnedAchievements.includes(achievementIds["my-first-checkin"])) {
+    processMyFirstCheckin(userId);
+  }
+
+  if (!earnedAchievements.includes(achievementIds["continuous-checkin"])) {
+    processContinuousCheckin(userId, checkpointId);
+  }
+
+  if (!earnedAchievements.includes(achievementIds["dont-exercise-in-a-stairs"])) {
+    processDontExerciseInAStairs(userId, checkpointId);
+  }
+
+  if (!earnedAchievements.includes(achievementIds["floor-master-0"])) {
+    processFloorMaster(userId, 0);
+  }
+
+  if (!earnedAchievements.includes(achievementIds["floor-master-1"])) {
+    processFloorMaster(userId, 1);
+  }
+
+  if (!earnedAchievements.includes(achievementIds["floor-master-2"])) {
+    processFloorMaster(userId, 2);
+  }
+
+  if (!earnedAchievements.includes(achievementIds["floor-master-3"])) {
+    processFloorMaster(userId, 3);
+  }
+
+  if (!earnedAchievements.includes(achievementIds["floor-master-4"])) {
+    processFloorMaster(userId, 4);
+  }
+
+  if (!earnedAchievements.includes(achievementIds["floor-master-5"])) {
+    processFloorMaster(userId, 5);
+  }
+
+  if (!earnedAchievements.includes(achievementIds["floor-master-6"])) {
+    processFloorMaster(userId, 6);
+  }
+
+  if (!earnedAchievements.includes(achievementIds["floor-master-7"])) {
+    processFloorMaster(userId, 7);
+  }
+
+  if (!earnedAchievements.includes(achievementIds["floor-master-8"])) {
+    processFloorMaster(userId, 8);
+  }
+
+  if (!earnedAchievements.includes(achievementIds["food-master"])) {
+    processFoodMaster(userId);
+  }
+
+  if (!earnedAchievements.includes(achievementIds["repeat-checkin-food"])) {
+    processRepeatCheckinFood(userId, checkpointId);
+  }
+
+  if (!earnedAchievements.includes(achievementIds["rapid-checkin"])) {
+    processRapidCheckin(userId);
+  }
 }
 
 async function processMyFirstCheckin(userId: string) {
