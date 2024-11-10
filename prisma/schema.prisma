@@ -32,8 +32,8 @@ model Booth {
 
 model Checkpoint {
   id                String     @id @default(cuid())
-  display_name      String? // Boothに紐付けられたCheckpointはそっちを参照するので
-  floor             Int? // Boothに紐付けられたCheckpointはそっちを参照するので
+  display_name      String
+  floor             Int
   cooldown_duration Int
   booth_id          String?
   booth             Booth?     @relation(fields: [booth_id], references: [id])
