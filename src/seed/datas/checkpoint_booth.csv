@@ -1,0 +1,40 @@
+id,display_name,floor,booth_id,cooldown_duration
+NELDM,オープニングセレモニー,3,opening_ceremony,900000
+FEYEG,CGスペシャリスト学科 TCコンペ表彰式,3,cg_specialist_department_tc_competition_awards,900000
+MBGIA,コスプレコンテスト アピールタイム,3,cosplay_contest_appeal_time,900000
+AZICV,文化祭フリーステージ,3,cultural_festival_free_stage,900000
+ADPTU,コスプレコンテスト 表彰式,3,cosplay_contest_award_ceremony,900000
+EIMZC,ビンゴ大会,3,bingo_tournament,900000
+YDCKT,チャリティー餅つきイベント,1,charity_mochi_pounding_event,900000
+WGZZC,HAPPY☆MUSIC ライブイベント,3,happy_music_live_event,900000
+ECCCY,ベビーカステラ屋さん,1,baby_castella_shop,900000
+CCAOQ,ポップコーン Presented by さざなみ開発,1,popcorn_presented_by_sazanami_development,900000
+DAPUY,餃子の平野,1,gyoza_no_hirano,900000
+CTADQ,焼鳥風月(やちょうふうげつ),1,yakitori_fugetsu,900000
+RJGJG,鳥頂点(うちょうてん),1,bird_summit,900000
+RAVHH,ぐるぐるポテト,1,spiral_potato,900000
+FBHIF,とらいでんとドリンクスタンド,1,trident_drink_stand,900000
+AICIG,CG 作品展示・上映,8,cg_art_exhibition_and_screening,900000
+ZPDWH,決闘！召喚の頂,7,duel_summoners_peak,900000
+OBCMQ,スパーキングゼロ！大会,7,sparking_zero_tournament,900000
+FZPGT,大乱闘スマッシュブラザーズ SPECIAL ゲーム化最強決定戦,7,super_smash_bros_special_game_decisive_battle,900000
+IGGRC,ストリートファイター６ トーナメント大会,7,street_fighter_6_tournament,900000
+VGFYW,ポケフェスティバス,7,poke_festival,900000
+REDEG,デュエランド,7,duel_land,900000
+TCVED,百科王学園,6,encyclopedia_king_academy,900000
+POEAE,ショットガンルーレット,6,shotgun_roulette,900000
+XDAZA,Game & Sip Studio (GS^2),6,game_and_sip_studio_gs2,900000
+DGZLR,めいどりんく とらいでんと店,6,maidrink_trident_shop,900000
+HPDDG,レトロゲームスタジアム,6,retro_game_stadium,900000
+CEBJD,たのしい射的,6,fun_shooting_gallery,900000
+RFHIY,ひもくじ,6,string_lottery,900000
+IEHTD,GT卒業制作展示,5,gt_graduation_project_exhibition,900000
+FAQEA,ゲーム学科国際交流作品展示,5,game_department_international_exhibition,900000
+EEHBZ,GameLab::PlaySpace,5,gamelab_play_space,900000
+AXEFH,さざなみ開発,5,sazanami_development,900000
+GQYBH,謎解き,4,puzzle_solving,900000
+EIKSP,ゲーム広場,4,game_square,900000
+FFRIY,キッキングスナイパー,4,kicking_sniper,900000
+TEGBO,蒲公英 & CRAFTCUBE,3,dandelion_and_craftcube,900000
+BSCHE,ワンコイン占い,3,one_coin_fortune_telling,900000
+GEGMV,チーム出the印,0,team_print_the,900000
