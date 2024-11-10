@@ -14,12 +14,12 @@ datasource db {
 }
 
 model User {
-  id           String       @id @default(cuid())
+  id           String        @id @default(cuid())
   display_name String?
-  is_activated Boolean      @default(false)
+  is_activated Boolean       @default(false)
   Checkin      Checkin[]
   Cooldown     Cooldown[]
-  Achivement   Achivement[]
+  Acheivement  Achievement[]
 }
 
 model Booth {
@@ -62,10 +62,10 @@ model Cooldown {
 }
 
 model Achievement {
-  id            String   @id @default(cuid())
-  user_id       String
-  achivement_id String
-  earned_time   DateTime @default(now())
-  progress      Int?     @default(0)
-  user          User     @relation(fields: [user_id], references: [id])
+  id             String   @id @default(cuid())
+  user_id        String
+  achievement_id String
+  earned_time    DateTime @default(now())
+  progress       Int?     @default(0)
+  user           User     @relation(fields: [user_id], references: [id])
 }
