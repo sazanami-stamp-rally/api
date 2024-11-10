@@ -61,7 +61,7 @@ model Cooldown {
   checkpoint    Checkpoint @relation(fields: [checkpoint_id], references: [id])
 }
 
-model Achivement {
+model Achievement {
   id            String   @id @default(cuid())
   user_id       String
   achivement_id String
