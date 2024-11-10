@@ -11,14 +11,16 @@ router.get('/', hasUserId, async (req: Request, res: Response) => {
   // hasUserIdミドルウェアを挟んでいる場合, req.userIdは存在することが保証されている
   getHistory(req.userId!).then((history) => {
     const historyData = history.map(async (checkin) => {
+      const isFinished = await canCheckin(req.userId!, checkin.checkpoint_id);
       return {
         checkpointId: checkin.checkpoint_id,
         checkpointName: checkin.checkpoint.display_name,
         checkinTime: checkin.checkin_time,
         category: checkin.checkpoint.category,
+        floor: checkin.checkpoint.floor,
         cooldown: {
-          ended: await canCheckin(req.userId!, checkin.checkpoint_id),
-          remaining: (Date.now() - checkin.checkin_time.getTime()),
+          isFinished,
+          remaining: isFinished ? null : (new Date().getTime() - checkin.checkin_time.getTime()) / 1000,
         },
       } as HistoryItem;
     });
@@ -28,3 +30,5 @@ router.get('/', hasUserId, async (req: Request, res: Response) => {
     });
   });
 });
+
+export default router;

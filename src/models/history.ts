@@ -3,9 +3,10 @@ interface HistoryItem {
   checkpointName: string
   category: string
   checkinTime: Date
+  floor: number
   cooldown: {
-    ended: boolean
-    remaining: number
+    isFinished: boolean
+    remaining: number | null
   }
 }
 
