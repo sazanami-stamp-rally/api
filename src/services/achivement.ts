@@ -33,7 +33,8 @@ export async function processCheckinAchievement(userId: string, checkpointId: st
   });
 
   if (!earnedAchievements.includes(achievementIds["debug"])) {
-    handleGetAchievement(userId, achievementIds["debug"]);
+    if (checkpointId.startsWith("DEBUG"))
+      handleGetAchievement(userId, achievementIds["debug"]);
   }
 
   const checkpoint = await getCheckpoint(checkpointId);
