@@ -35,6 +35,7 @@ model Checkpoint {
   display_name      String
   floor             Int
   cooldown_duration Int
+  category          String
   booth_id          String?
   booth             Booth?     @relation(fields: [booth_id], references: [id])
   Checkin           Checkin[]
