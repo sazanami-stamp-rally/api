@@ -8,8 +8,10 @@ export default function hasUserId(req: Request, res: Response, next: NextFunctio
             next();
         } else {
             res.status(400).json({ message: 'Missing or invalid user id' });
+            next();
         }
     } else {
         res.status(400).json({ message: 'Missing or invalid user id' });
+        next();
     }
 }
