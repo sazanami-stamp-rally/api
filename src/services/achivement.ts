@@ -151,13 +151,15 @@ async function getFloorCheckinRate(userId: string, floor: number): Promise<numbe
       floor
     }
   }).then(async (checkpoints) => {
+    // ユニークなチェックポイントIDのセットを取得
     const checkins = await prisma.checkin.findMany({
       where: {
         user_id: userId,
         checkpoint_id: {
           in: checkpoints.map((checkpoint) => checkpoint.id)
         }
-      }
+      },
+      distinct: ['checkpoint_id'] // チェックポイントIDごとに重複を排除
     });
     return checkins.length / checkpoints.length;
   });
@@ -170,13 +172,15 @@ async function getCategoryCheckinRate(userId: string, category: string): Promise
       category
     }
   }).then(async (checkpoints) => {
+    // ユニークなチェックポイントIDのセットを取得
     const checkins = await prisma.checkin.findMany({
       where: {
         user_id: userId,
         checkpoint_id: {
           in: checkpoints.map((checkpoint) => checkpoint.id)
         }
-      }
+      },
+      distinct: ['checkpoint_id'] // チェックポイントIDごとに重複を排除
     });
     return checkins.length / checkpoints.length;
   });
