@@ -26,7 +26,6 @@ const achievementIds = {
 } as const;
 
 export async function processCheckinAchievement(userId: string, checkpointId: string) {
-  // TODO: 効率化(獲得されうる実績のみを処理する)
 
   const earnedAchievements = await getAchievements(userId).then((achievements) => {
     return achievements.map((achievement) => achievement.achievement_id);
