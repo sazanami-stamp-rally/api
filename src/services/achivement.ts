@@ -21,7 +21,22 @@ const achievementIds = {
 } as const;
 
 export function processCheckinAchievement(userId: string, checkpointId: string) {
-
+  // TODO: 効率化(獲得されうる実績のみを処理する)
+  processMyFirstCheckin(userId);
+  processContinuousCheckin(userId, checkpointId);
+  processDontExerciseInAStairs(userId, checkpointId);
+  processFloorMaster(userId, 0);
+  processFloorMaster(userId, 1);
+  processFloorMaster(userId, 2);
+  processFloorMaster(userId, 3);
+  processFloorMaster(userId, 4);
+  processFloorMaster(userId, 5);
+  processFloorMaster(userId, 6);
+  processFloorMaster(userId, 7);
+  processFloorMaster(userId, 8);
+  processFoodMaster(userId);
+  processRepeatCheckinFood(userId, checkpointId);
+  processRapidCheckin(userId);
 }
 
 async function processMyFirstCheckin(userId: string) {
@@ -97,7 +112,7 @@ async function processRapidCheckin(userId: string) {
 
 // Handle getting achievements
 function handleGetAchievement(userId: string, achievementId: string) {
-  // TODO
+  console.log(`User ${userId} got achievement ${achievementId}`);
 }
 
 // Utils
