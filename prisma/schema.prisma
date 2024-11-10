@@ -22,23 +22,30 @@ model User {
 }
 
 model Booth {
-  id                String     @id @default(cuid())
-  display_name      String
-  floor             Int
-  category          String
-  cooldown_duration Int        @default(900) // TODO: 900msになってしまってる
-  flags             String[]   @default([])
-  Checkin           Checkin[]
-  Cooldown          Cooldown[]
+  id           String       @id @default(cuid())
+  display_name String
+  floor        Int
+  category     String
+  flags        String[]     @default([])
+  Cooldown     Cooldown[]
+  Checkpoint   Checkpoint[]
+}
+
+model Checkpoint {
+  id                String  @id @default(cuid())
+  display_name      String? // Boothに紐付けられたCheckpointはそっちを参照するので
+  floor             Int? // Boothに紐付けられたCheckpointはそっちを参照するので
+  cooldown_duration Int
+  booth_id          String?
+  booth             Booth?  @relation(fields: [booth_id], references: [id])
 }
 
 model Checkin {
-  id           String   @id @default(cuid())
-  user_id      String
-  booth_id     String
-  user         User     @relation(fields: [user_id], references: [id])
-  booth        Booth    @relation(fields: [booth_id], references: [id])
-  checkin_time DateTime @default(now())
+  id            String   @id @default(cuid())
+  user_id       String
+  checkpoint_id String
+  user          User     @relation(fields: [user_id], references: [id])
+  checkin_time  DateTime @default(now())
 }
 
 model Cooldown {
