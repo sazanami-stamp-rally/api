@@ -14,7 +14,7 @@ export async function seed(rootPath: string): Promise<void> {
         data.push({
           id: row.id as string,
           display_name: row.display_name as string,
-          floor: row.floor as number,
+          floor: parseInt(row.floor as string),
           category: row.category as string,
           flags: row.flags ? row.flags.split(',') : [],
         });
