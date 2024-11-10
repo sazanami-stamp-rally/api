@@ -16,6 +16,7 @@ export async function seed(rootPath: string): Promise<void> {
           display_name: row.display_name as string,
           floor: parseInt(row.floor as string),
           booth_id: (row.booth_id as string || null),
+          category: row.category as string,
           cooldown_duration: parseInt(row.cooldown_duration as string),
         });
       })

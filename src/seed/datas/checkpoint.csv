@@ -1,2 +1,2 @@
-id,display_name,floor,booth_id,cooldown_duration
-DEBUG_CP1,デバッグ用チェックポイント,1,,2000
+id,display_name,floor,booth_id,cooldown_duration,category
+DEBUG_CP1,デバッグ用チェックポイント,1,,2000,debug
