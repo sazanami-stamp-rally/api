@@ -203,7 +203,7 @@ async function processRapidCheckin(userId: string) {
 }
 
 // Handle getting achievements
-function handleGetAchievement(userId: string, achievementId: string) {
+async function handleGetAchievement(userId: string, achievementId: string) {
   logger.info(`ユーザー ${userId} が実績 ${achievementId} を獲得しました`);
   return prisma.achievement.create({
     data: {
