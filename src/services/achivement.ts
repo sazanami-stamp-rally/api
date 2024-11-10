@@ -1,0 +1,180 @@
+import { Checkin } from "@prisma/client";
+import prisma from "@src/prisma";
+
+const achievementIds = {
+  "my-first-checkin": "my-first-checkin", // 1回目のチェックイン: ありぐにゃとごにゃいにゃす！
+  "continuous-checkin": "continuous-checkin", // 同じチェックポイントに連続してチェックイン: スルメ
+  "dont-exercise-in-a-stairs": "dont-exercise-in-a-stairs", // 1階→8階 or 8階→1階へ連続チェックイン: 階段で運動しないで！
+  "floor-master-0": "floor-master-0", // 0階のチェックポイントの8割以上にチェックイン: 0階マスター
+  "floor-master-1": "floor-master-1", // 1階のチェックポイントの8割以上にチェックイン: 1階マスター
+  "floor-master-2": "floor-master-2", // 2階のチェックポイントの8割以上にチェックイン: 2階マスター
+  "floor-master-3": "floor-master-3", // 3階のチェックポイントの8割以上にチェックイン: 3階マスター
+  "floor-master-4": "floor-master-4", // 4階のチェックポイントの8割以上にチェックイン: 4階マスター
+  "floor-master-5": "floor-master-5", // 5階のチェックポイントの8割以上にチェックイン: 5階マスター
+  "floor-master-6": "floor-master-6", // 6階のチェックポイントの8割以上にチェックイン: 6階マスター
+  "floor-master-7": "floor-master-7", // 7階のチェックポイントの8割以上にチェックイン: 7階マスター
+  "floor-master-8": "floor-master-8", // 8階のチェックポイントの8割以上にチェックイン: 8階マスター
+  "food-master": "food-master", // 食事系チェックポイントの8割以上にチェックイン: 食事マスター
+  "repeat-checkin-food": "repeat-checkin-food", // 同じ食事系チェックポイントに２回以上チェックイン: クセになる味
+  "section1-to-2": "section1-to-2", // セクション1(午前)にチェックインした人がセクション2(午後)にもチェックイン: おはようからこんにちは TODO: セクションを実装してから
+  "rapid-checkin": "rapid-checkin", // 前回のチェックインから3分以内にチェックイン: 気分やさん
+} as const;
+
+export function processCheckinAchievement(userId: string, checkpointId: string) {
+
+}
+
+async function processMyFirstCheckin(userId: string) {
+  return getPreviousCheckin(userId).then((checkin) => {
+    if (checkin === undefined) {
+      // 1回目のチェックイン
+      handleGetAchievement(userId, achievementIds["my-first-checkin"]);
+    }
+  });
+}
+
+async function processContinuousCheckin(userId: string, checkpointId: string) {
+  return getCheckinCountAtCheckpoint(userId, checkpointId).then((count) => {
+    if (count >= 2) {
+      // 同じチェックポイントに連続してチェックイン
+      handleGetAchievement(userId, achievementIds["continuous-checkin"]);
+    }
+  });
+}
+
+async function processDontExerciseInAStairs(userId: string, checkpointId: string) {
+  return getPreviousCheckin(userId).then((previousCheckin) => {
+    if (previousCheckin !== undefined) {
+      getCheckpoint(checkpointId).then((triggeredCheckpoint) => {
+        if (triggeredCheckpoint!.floor === 1 && previousCheckin.checkpoint.floor === 8) {
+          // 1階→8階
+          handleGetAchievement(userId, achievementIds["dont-exercise-in-a-stairs"]);
+        } else if (triggeredCheckpoint!.floor === 8 && previousCheckin.checkpoint.floor === 1) {
+          // 8階→1階
+          handleGetAchievement(userId, achievementIds["dont-exercise-in-a-stairs"]);
+        }
+      });
+    }
+  });
+}
+
+async function processFloorMaster(userId: string, floor: number) {
+  return getFloorCheckinRate(userId, floor).then((rate) => {
+    if (rate >= 0.8) {
+      if (`floor-master-${floor}` in achievementIds) {
+        // @ts-ignore-next-line
+        handleGetAchievement(userId, achievementIds[`floor-master-${floor}`]);
+      }
+    }
+  });
+}
+
+async function processFoodMaster(userId: string) {
+  return getCategoryCheckinRate(userId, "food_and_drink").then((rate) => {
+    if (rate >= 0.8) {
+      handleGetAchievement(userId, achievementIds["food-master"]);
+    }
+  });
+}
+
+async function processRepeatCheckinFood(userId: string, checkpointId: string) {
+  return getCheckinCountAtCheckpoint(userId, checkpointId).then((count) => {
+    if (count >= 2) {
+      handleGetAchievement(userId, achievementIds["repeat-checkin-food"]);
+    }
+  });
+}
+
+async function processRapidCheckin(userId: string) {
+  return getPreviousCheckin(userId).then((previousCheckin) => {
+    if (previousCheckin !== undefined) {
+      if (Date.now() - previousCheckin.checkin_time.getTime() <= 3 * 60 * 1000) {
+        handleGetAchievement(userId, achievementIds["rapid-checkin"]);
+      }
+    }
+  });
+}
+
+// Handle getting achievements
+function handleGetAchievement(userId: string, achievementId: string) {
+  // TODO
+}
+
+// Utils
+
+// チェックポイントIDからチェックポイントを取得
+async function getCheckpoint(checkpointId: string) {
+  return prisma.checkpoint.findFirst({
+    where: {
+      id: checkpointId
+    }
+  });
+}
+
+// 一つ前のチェックインを取得
+async function getPreviousCheckin(userId: string) {
+  return prisma.checkin.findMany({
+    where: {
+      user_id: userId
+    },
+    include: {
+      checkpoint: true
+    },
+    orderBy: {
+      checkin_time: 'desc'
+    },
+    take: 2
+  }).then((checkins) => {
+    return checkins[1];
+  });
+}
+
+// ユーザーの指定フロアチェックイン率を取得
+async function getFloorCheckinRate(userId: string, floor: number): Promise<number> {
+  return prisma.checkpoint.findMany({
+    where: {
+      floor
+    }
+  }).then(async (checkpoints) => {
+    const checkins = await prisma.checkin.findMany({
+      where: {
+        user_id: userId,
+        checkpoint_id: {
+          in: checkpoints.map((checkpoint) => checkpoint.id)
+        }
+      }
+    });
+    return checkins.length / checkpoints.length;
+  });
+}
+
+// ユーザーの指定カテゴリチェックイン率を取得
+async function getCategoryCheckinRate(userId: string, category: string): Promise<number> {
+  return prisma.checkpoint.findMany({
+    where: {
+      category
+    }
+  }).then(async (checkpoints) => {
+    const checkins = await prisma.checkin.findMany({
+      where: {
+        user_id: userId,
+        checkpoint_id: {
+          in: checkpoints.map((checkpoint) => checkpoint.id)
+        }
+      }
+    });
+    return checkins.length / checkpoints.length;
+  });
+}
+
+// 同じチェックポイントにチェックインした回数を取得
+async function getCheckinCountAtCheckpoint(userId: string, checkpointId: string): Promise<number> {
+  return prisma.checkin.findMany({
+    where: {
+      user_id: userId,
+      checkpoint_id: checkpointId
+    }
+  }).then((checkins) => {
+    return checkins.length;
+  });
+}
