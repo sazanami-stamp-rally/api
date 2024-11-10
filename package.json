@@ -1,34 +1,35 @@
 {
-    "name": "stamp-rally-api",
-    "version": "1.0.0",
-    "type": "module",
-    "main": "index.js",
-    "scripts": {
-        "start": "npx tsx src/index.ts",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "",
-    "license": "MIT",
-    "description": "",
-    "dependencies": {
-        "@prisma/client": "^5.22.0",
-        "@types/cors": "^2.8.17",
-        "@types/ioredis": "^4.28.10",
-        "@types/jsonwebtoken": "^9.0.7",
-        "@types/node-cron": "^3.0.11",
-        "chalk": "^5.3.0",
-        "cors": "^2.8.5",
-        "csv-parser": "^3.0.0",
-        "express": "^4.21.1",
-        "ioredis": "^5.4.1",
-        "jsonwebtoken": "^9.0.2",
-        "node-cron": "^3.0.3",
-        "tsc": "^2.0.4"
-    },
-    "devDependencies": {
-        "@types/chalk": "^0.4.31",
-        "@types/express": "^5.0.0",
-        "@types/node": "^22.9.0",
-        "typescript": "^5.6.3"
-    }
+  "name": "stamp-rally-api",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx tsx src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "npx ts-node src/seed/index.ts"
+  },
+  "author": "",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "@types/cors": "^2.8.17",
+    "@types/ioredis": "^4.28.10",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/node-cron": "^3.0.11",
+    "chalk": "^5.3.0",
+    "cors": "^2.8.5",
+    "csv-parser": "^3.0.0",
+    "express": "^4.21.1",
+    "ioredis": "^5.4.1",
+    "jsonwebtoken": "^9.0.2",
+    "node-cron": "^3.0.3",
+    "tsc": "^2.0.4"
+  },
+  "devDependencies": {
+    "@types/chalk": "^0.4.31",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.9.0",
+    "typescript": "^5.6.3"
+  }
 }
