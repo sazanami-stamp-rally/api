@@ -1,5 +1,10 @@
 import { Checkin } from "@prisma/client";
 import prisma from "@src/prisma";
+import Logger from "@src/logger";
+
+const logger = new Logger();
+logger.setTags(["service", "achievement"]);
+
 
 const achievementIds = {
   "my-first-checkin": "my-first-checkin", // 1回目のチェックイン: ありぐにゃとごにゃいにゃす！
@@ -41,6 +46,7 @@ export function processCheckinAchievement(userId: string, checkpointId: string) 
 
 async function processMyFirstCheckin(userId: string) {
   return getPreviousCheckin(userId).then((checkin) => {
+    console.log(checkin);
     if (checkin === undefined) {
       // 1回目のチェックイン
       handleGetAchievement(userId, achievementIds["my-first-checkin"]);
@@ -112,10 +118,25 @@ async function processRapidCheckin(userId: string) {
 
 // Handle getting achievements
 function handleGetAchievement(userId: string, achievementId: string) {
-  console.log(`User ${userId} got achievement ${achievementId}`);
+  logger.info(`ユーザー ${userId} が実績 ${achievementId} を獲得しました`);
+  return prisma.achievement.create({
+    data: {
+      user_id: userId,
+      achievement_id: achievementId
+    }
+  });
 }
 
 // Utils
+
+// ユーザーの獲得済みアチーブメントを取得
+async function getAchievements(userId: string) {
+  return prisma.achievement.findMany({
+    where: {
+      user_id: userId
+    }
+  });
+}
 
 // チェックポイントIDからチェックポイントを取得
 async function getCheckpoint(checkpointId: string) {
