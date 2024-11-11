@@ -7,6 +7,7 @@ logger.setTags(["service", "achievement"]);
 
 
 const achievementIds = {
+  "debug": "debug", // デバッグ用
   "my-first-checkin": "my-first-checkin", // 1回目のチェックイン: ありぐにゃとごにゃいにゃす！
   "continuous-checkin": "continuous-checkin", // 同じチェックポイントに連続してチェックイン: スルメ
   "dont-exercise-in-a-stairs": "dont-exercise-in-a-stairs", // 1階→8階 or 8階→1階へ連続チェックイン: 階段で運動しないで！
@@ -34,6 +35,11 @@ export async function processCheckinAchievement(userId: string, checkpointId: st
   });
 
   const checkpoint = await getCheckpoint(checkpointId);
+
+  if (checkpointId.startsWith("DEBUG")) {
+    await handleGetAchievement(userId, achievementIds["debug"]);
+    earnedThisCheckinIds.push(achievementIds["debug"]);
+  }
 
   if (!earnedAchievements.includes(achievementIds["my-first-checkin"])) {
     await processMyFirstCheckin(userId).then((earned) => {
@@ -190,6 +196,8 @@ export async function processCheckinAchievement(userId: string, checkpointId: st
       }
     });
   }
+
+  return earnedThisCheckinIds;
 }
 
 async function processMyFirstCheckin(userId: string): Promise<Boolean> {
