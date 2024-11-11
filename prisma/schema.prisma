@@ -27,8 +27,19 @@ model Booth {
   display_name String
   floor        Int
   category     String
+  passcode     String
   flags        String[]     @default([])
   Checkpoint   Checkpoint[]
+  Broadcast    Broadcast[]
+}
+
+model Broadcast {
+  id         String   @id @default(cuid())
+  title      String
+  body       String
+  created_at DateTime @default(now())
+  booth_id   String
+  booth      Booth    @relation(fields: [booth_id], references: [id])
 }
 
 model Checkpoint {
