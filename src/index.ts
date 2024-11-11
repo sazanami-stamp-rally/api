@@ -58,7 +58,7 @@ configLogger.info('Express JSON parserを有効にしました');
 
 // For debug only
 const corsOptions = {
-    origin: 'http://localhost:5173',
+    origin: 'http://rca-ukuru:5173',
     methos: "GET, POST, PUT, DELETE, OPTIONS",
     optionsSuccessStatus: 200,
     credentials: true
