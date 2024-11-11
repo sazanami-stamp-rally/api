@@ -17,6 +17,7 @@ export async function seed(rootPath: string): Promise<void> {
           floor: parseInt(row.floor as string),
           category: row.category as string,
           flags: row.flags ? row.flags.split(',') : [],
+          passcode: row.passcode as string,
         });
       })
       .on('end', () => {
