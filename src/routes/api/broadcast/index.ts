@@ -1,7 +1,15 @@
-import { createBroadcast } from "@src/services/broadcast";
+import { createBroadcast, getAllBroadcast } from "@src/services/broadcast";
 import { Router } from "express";
 
 const router = Router();
+
+router.get('/', (req, res) => {
+  getAllBroadcast().then((broadcasts) => {
+    return res.status(200).json({
+      broadcasts
+    });
+  });
+});
 
 router.post('/', (req, res) => {
   let object;
