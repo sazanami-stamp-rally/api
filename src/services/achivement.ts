@@ -36,7 +36,7 @@ export async function processCheckinAchievement(userId: string, checkpointId: st
   const checkpoint = await getCheckpoint(checkpointId);
 
   if (!earnedAchievements.includes(achievementIds["my-first-checkin"])) {
-    processMyFirstCheckin(userId).then((earned) => {
+    await processMyFirstCheckin(userId).then((earned) => {
       if (earned) {
         earnedThisCheckinIds.push(achievementIds["my-first-checkin"]);
       }
@@ -44,7 +44,7 @@ export async function processCheckinAchievement(userId: string, checkpointId: st
   }
 
   if (!earnedAchievements.includes(achievementIds["continuous-checkin"])) {
-    processContinuousCheckin(userId, checkpointId).then((earned) => {
+    await processContinuousCheckin(userId, checkpointId).then((earned) => {
       if (earned) {
         earnedThisCheckinIds.push(achievementIds["continuous-checkin"]);
       }
@@ -54,7 +54,7 @@ export async function processCheckinAchievement(userId: string, checkpointId: st
   if (!earnedAchievements.includes(achievementIds["dont-exercise-in-a-stairs"])) {
     if (checkpoint!.floor === 1 || checkpoint!.floor === 8) {
       // トリガーされたチェックポイントが1階または8階の場合のみ処理
-      processDontExerciseInAStairs(userId, checkpointId).then((earned) => {
+      await processDontExerciseInAStairs(userId, checkpointId).then((earned) => {
         if (earned) {
           earnedThisCheckinIds.push(achievementIds["dont-exercise-in-a-stairs"]);
         }
@@ -65,7 +65,7 @@ export async function processCheckinAchievement(userId: string, checkpointId: st
   if (!earnedAchievements.includes(achievementIds["floor-master-0"])) {
     if (checkpoint!.floor === 0) {
       // トリガーされたチェックポイントが0階の場合のみ処理
-      processFloorMaster(userId, 0).then((earned) => {
+      await processFloorMaster(userId, 0).then((earned) => {
         if (earned) {
           earnedThisCheckinIds.push(achievementIds["floor-master-0"]);
         }
@@ -76,7 +76,7 @@ export async function processCheckinAchievement(userId: string, checkpointId: st
   if (!earnedAchievements.includes(achievementIds["floor-master-1"])) {
     if (checkpoint!.floor === 1) {
       // トリガーされたチェックポイントが1階の場合のみ処理
-      processFloorMaster(userId, 1).then((earned) => {
+      await processFloorMaster(userId, 1).then((earned) => {
         if (earned) {
           earnedThisCheckinIds.push(achievementIds["floor-master-1"]);
         }
@@ -87,7 +87,7 @@ export async function processCheckinAchievement(userId: string, checkpointId: st
   if (!earnedAchievements.includes(achievementIds["floor-master-2"])) {
     if (checkpoint!.floor === 2) {
       // トリガーされたチェックポイントが2階の場合のみ処理
-      processFloorMaster(userId, 2).then((earned) => {
+      await processFloorMaster(userId, 2).then((earned) => {
         if (earned) {
           earnedThisCheckinIds.push(achievementIds["floor-master-2"]);
         }
@@ -98,7 +98,7 @@ export async function processCheckinAchievement(userId: string, checkpointId: st
   if (!earnedAchievements.includes(achievementIds["floor-master-3"])) {
     if (checkpoint!.floor === 3) {
       // トリガーされたチェックポイントが3階の場合のみ処理
-      processFloorMaster(userId, 3).then((earned) => {
+      await processFloorMaster(userId, 3).then((earned) => {
         if (earned) {
           earnedThisCheckinIds.push(achievementIds["floor-master-3"]);
         }
@@ -109,7 +109,7 @@ export async function processCheckinAchievement(userId: string, checkpointId: st
   if (!earnedAchievements.includes(achievementIds["floor-master-4"])) {
     if (checkpoint!.floor === 4) {
       // トリガーされたチェックポイントが4階の場合のみ処理
-      processFloorMaster(userId, 4).then((earned) => {
+      await processFloorMaster(userId, 4).then((earned) => {
         if (earned) {
           earnedThisCheckinIds.push(achievementIds["floor-master-4"]);
         }
@@ -120,7 +120,7 @@ export async function processCheckinAchievement(userId: string, checkpointId: st
   if (!earnedAchievements.includes(achievementIds["floor-master-5"])) {
     if (checkpoint!.floor === 5) {
       // トリガーされたチェックポイントが5階の場合のみ処理
-      processFloorMaster(userId, 5).then((earned) => {
+      await processFloorMaster(userId, 5).then((earned) => {
         if (earned) {
           earnedThisCheckinIds.push(achievementIds["floor-master-5"]);
         }
@@ -131,7 +131,7 @@ export async function processCheckinAchievement(userId: string, checkpointId: st
   if (!earnedAchievements.includes(achievementIds["floor-master-6"])) {
     if (checkpoint!.floor === 6) {
       // トリガーされたチェックポイントが6階の場合のみ処理
-      processFloorMaster(userId, 6).then((earned) => {
+      await processFloorMaster(userId, 6).then((earned) => {
         if (earned) {
           earnedThisCheckinIds.push(achievementIds["floor-master-6"]);
         }
@@ -142,7 +142,7 @@ export async function processCheckinAchievement(userId: string, checkpointId: st
   if (!earnedAchievements.includes(achievementIds["floor-master-7"])) {
     if (checkpoint!.floor === 7) {
       // トリガーされたチェックポイントが7階の場合のみ処理
-      processFloorMaster(userId, 7).then((earned) => {
+      await processFloorMaster(userId, 7).then((earned) => {
         if (earned) {
           earnedThisCheckinIds.push(achievementIds["floor-master-7"]);
         }
@@ -153,7 +153,7 @@ export async function processCheckinAchievement(userId: string, checkpointId: st
   if (!earnedAchievements.includes(achievementIds["floor-master-8"])) {
     if (checkpoint!.floor === 8) {
       // トリガーされたチェックポイントが8階の場合のみ処理
-      processFloorMaster(userId, 8).then((earned) => {
+      await processFloorMaster(userId, 8).then((earned) => {
         if (earned) {
           earnedThisCheckinIds.push(achievementIds["floor-master-8"]);
         }
@@ -164,7 +164,7 @@ export async function processCheckinAchievement(userId: string, checkpointId: st
   if (!earnedAchievements.includes(achievementIds["food-master"])) {
     if (checkpoint!.category === "food_and_drink") {
       // トリガーされたチェックポイントが食事系の場合のみ処理
-      processFoodMaster(userId).then((earned) => {
+      await processFoodMaster(userId).then((earned) => {
         if (earned) {
           earnedThisCheckinIds.push(achievementIds["food-master"]);
         }
@@ -175,7 +175,7 @@ export async function processCheckinAchievement(userId: string, checkpointId: st
   if (!earnedAchievements.includes(achievementIds["repeat-checkin-food"])) {
     if (checkpoint!.category === "food_and_drink") {
       // トリガーされたチェックポイントが食事系の場合のみ処理
-      processRepeatCheckinFood(userId, checkpointId).then((earned) => {
+      await processRepeatCheckinFood(userId, checkpointId).then((earned) => {
         if (earned) {
           earnedThisCheckinIds.push(achievementIds["repeat-checkin-food"]);
         }
