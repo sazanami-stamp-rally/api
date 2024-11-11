@@ -11,5 +11,9 @@ async function createBroadcast(boothId: string, title: string, body: string) {
 }
 
 
-export { createBroadcast };
+async function getAllBroadcast() {
+  return await prisma.broadcast.findMany();
+}
+
+export { createBroadcast, getAllBroadcast };
 
