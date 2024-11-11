@@ -19,11 +19,10 @@ async function handleCheckin(userId: string, checkpointId: string) {
         }
       }
     }
-  }).then((checkin) => {
-    logger.info(`User ${userId} checked in at checkpoint ${checkpointId}`);
-    return checkin;
   }).then(() => {
-    processCheckinAchievement(userId, checkpointId);
+    logger.info(`User ${userId} checked in at checkpoint ${checkpointId}`);
+  }).then(async () => {
+    return await processCheckinAchievement(userId, checkpointId);
   });
 }
 

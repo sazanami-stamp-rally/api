@@ -27,24 +27,14 @@ router.post('/', hasUserId, async (req, res) => {
   }
 
   handleCheckin(req.userId!, checkpointId)
-    .then((checkin) => {
-      if (checkin === null) {
-        const resp = internalServerErrorResponse();
-        res.status(resp.statusCode).json(resp.body);
-        throw new Error('Checkin failed');
-      }
-      return setCooldown(req.userId!, checkpointId);
-    })
-    .then((cooldown) => {
-      if (cooldown === null) {
-        const resp = internalServerErrorResponse();
-        res.status(resp.statusCode).json(resp.body);
-        throw new Error('Cooldown setup failed');
-      }
+    .then(async (earnedIds) => {
+      await setCooldown(req.userId!, checkpointId);
       const resp = okResponse();
-      res.status(resp.statusCode).json(resp.body);
+      res.status(resp.statusCode).json(earnedIds);
     })
     .catch((error) => {
+      const resp = internalServerErrorResponse();
+      res.status(resp.statusCode).json(resp.body);
       console.error(error.message);
     });
 
