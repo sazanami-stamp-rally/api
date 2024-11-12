@@ -15,5 +15,19 @@ async function getAllBroadcast() {
   return await prisma.broadcast.findMany();
 }
 
-export { createBroadcast, getAllBroadcast };
+async function getAllBroadcastWithCursorPagination(cursorId: string | null, limit: number) {
+  return await prisma.broadcast.findMany({
+    ...(cursorId && {
+      cursor: {
+        id: cursorId
+      }
+    }),
+    orderBy: {
+      id: 'desc', // createdAtを使ってもいいけど、cuidも10000レコード/ミリ秒までならソート可能性が保たれるので
+    },
+    take: limit,
+  });
+}
+
+export { createBroadcast, getAllBroadcast, getAllBroadcastWithCursorPagination };
 

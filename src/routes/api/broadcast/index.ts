@@ -1,14 +1,38 @@
-import { createBroadcast, getAllBroadcast } from "@src/services/broadcast";
+import parsePagination from "@src/routes/middlewares/pagination";
+import { createBroadcast, getAllBroadcast, getAllBroadcastWithCursorPagination } from "@src/services/broadcast";
 import { Router } from "express";
 
 const router = Router();
 
-router.get('/', (req, res) => {
+router.get('/all', (req, res) => {
   getAllBroadcast().then((broadcasts) => {
     return res.status(200).json({
       broadcasts
     });
   });
+});
+
+router.get('/', parsePagination, async (req, res) => {
+  const pagination = req.pagination;
+  if (!pagination) {
+    res.status(400).json({
+      message: 'Invalid query parameters'
+    });
+    return 
+  } else if (pagination.page !== -1) {
+    // ページベースのページネーションには未対応
+    // TODO: エラーを返す
+    return
+  }
+  getAllBroadcastWithCursorPagination(
+    pagination.from ? pagination.from : null,
+    pagination.limit)
+    .then((broadcasts) => {
+      return res.status(200).json({
+        broadcasts,
+        cursor: broadcasts.length === 0 ? null : broadcasts[broadcasts.length - 1].id // クライアントに処理させてもいい気はする
+      });
+    });
 });
 
 router.post('/', (req, res) => {
