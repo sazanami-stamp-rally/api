@@ -35,6 +35,7 @@ async function getAllBroadcastWithCursorPagination(cursorId: string | null, limi
       booth: true
     },
     take: limit,
+    skip: 1
   });
 }
 
