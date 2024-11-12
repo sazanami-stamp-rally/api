@@ -1,5 +1,6 @@
 import parsePagination from "@src/routes/middlewares/pagination";
 import { createBroadcast, getAllBroadcast, getAllBroadcastWithCursorPagination } from "@src/services/broadcast";
+import { isCorrectBoothPasscode } from "@src/utils/isCorrectBoothPasscode";
 import { Router } from "express";
 
 const router = Router();
@@ -18,7 +19,7 @@ router.get('/', parsePagination, async (req, res) => {
     res.status(400).json({
       message: 'Invalid query parameters'
     });
-    return 
+    return
   } else if (pagination.page !== -1) {
     // ページベースのページネーションには未対応
     // TODO: エラーを返す
@@ -35,7 +36,17 @@ router.get('/', parsePagination, async (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
+
+  const isCorrectCredential = await isCorrectBoothPasscode(req.body.boothId, req.body.passcode);
+
+  if (!isCorrectCredential) {
+    res.status(401).json({
+      message: 'ブースIDまたはパスコードが正しくありません'
+    });
+    return;
+  }
+
   let object;
 
   try {

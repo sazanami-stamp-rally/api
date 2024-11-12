@@ -6,6 +6,7 @@ async function isCorrectBoothPasscode(boothId: string, passcode: string): Promis
       id: boothId
     }
   });
+  console.log(booth);
   if (!booth) {
     return false;
   }
