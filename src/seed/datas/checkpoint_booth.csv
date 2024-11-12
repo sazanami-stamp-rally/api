@@ -1,40 +1,44 @@
 id,display_name,floor,booth_id,cooldown_duration,category
-FAEDA,オープニングセレモニー,3,opening_ceremony,900000,main_venue
-IIEBS,CGスペシャリスト学科 TCコンペ表彰式,3,cg_specialist_department_tc_competition_awards,900000,main_venue
-GNWGL,コスプレコンテスト アピールタイム,3,cosplay_contest_appeal_time,900000,main_venue
-GBRDF,文化祭フリーステージ,3,cultural_festival_free_stage,900000,main_venue
-ZFIBK,コスプレコンテスト 表彰式,3,cosplay_contest_award_ceremony,900000,main_venue
-ELLKV,ビンゴ大会,3,bingo_tournament,900000,main_venue
-YTGGG,チャリティー餅つきイベント,1,charity_mochi_pounding_event,900000,sub_venue
-XAIIR,HAPPY☆MUSIC ライブイベント,3,happy_music_live_event,900000,sub_venue
-HIFCH,ベビーカステラ屋さん,1,baby_castella_shop,900000,food_and_drink
-GDAVS,ポップコーン Presented by さざなみ開発,1,popcorn_presented_by_sazanami_development,900000,food_and_drink
-ABQFB,餃子の平野,1,gyoza_no_hirano,900000,food_and_drink
-VEHOF,焼鳥風月(やちょうふうげつ),1,yakitori_fugetsu,900000,food_and_drink
-EQEBM,鳥頂点(うちょうてん),1,bird_summit,900000,food_and_drink
-DPFWI,ぐるぐるポテト,1,spiral_potato,900000,food_and_drink
-EFRFZ,とらいでんとドリンクスタンド,1,trident_drink_stand,900000,food_and_drink
-NGICE,CG 作品展示・上映,8,cg_art_exhibition_and_screening,900000,exhibition
-DBGEM,決闘！召喚の頂,7,duel_summoners_peak,900000,match
-CMAVE,スパーキングゼロ！大会,7,sparking_zero_tournament,900000,match
-DHIEL,大乱闘スマッシュブラザーズ SPECIAL ゲーム化最強決定戦,7,super_smash_bros_special_game_decisive_battle,900000,match
-GCTEB,ストリートファイター６ トーナメント大会,7,street_fighter_6_tournament,900000,match
-TWHUF,ポケフェスティバス,7,poke_festival,900000,match
-ECJSE,デュエランド,7,duel_land,900000,match
-AQDOP,百科王学園,6,encyclopedia_king_academy,900000,amusement
-BUTJB,ショットガンルーレット,6,shotgun_roulette,900000,amusement
-DGRVF,Game & Sip Studio (GS^2),6,game_and_sip_studio_gs2,900000,amusement
-GHEES,めいどりんく とらいでんと店,6,maidrink_trident_shop,900000,amusement
-OHHCG,レトロゲームスタジアム,6,retro_game_stadium,900000,amusement
-VEANG,たのしい射的,6,fun_shooting_gallery,900000,amusement
-QGPIB,ひもくじ,6,string_lottery,900000,amusement
-FVPKD,GT卒業制作展示,5,gt_graduation_project_exhibition,900000,exhibition
-CDASF,ゲーム学科国際交流作品展示,5,game_department_international_exhibition,900000,exhibition
-IALFT,GameLab::PlaySpace,5,gamelab_play_space,900000,exhibition
-RCOHG,さざなみ開発,5,sazanami_development,900000,exhibition
-IAKLG,謎解き,4,puzzle_solving,900000,executive_committee
-FGSBJ,ゲーム広場,4,game_square,900000,executive_committee
-DPTAU,キッキングスナイパー,4,kicking_sniper,900000,executive_committee
-AGRCG,蒲公英 & CRAFTCUBE,3,dandelion_and_craftcube,900000,merchandise
-IRCGA,ワンコイン占い,3,one_coin_fortune_telling,900000,merchandise
-BGBFI,チーム出the印,0,team_print_the,900000,merchandise
+CXNHW,オープニングセレモニー,3,opening_ceremony,900000,main_venue
+GIEDX,CGスペシャリスト学科 TCコンペ表彰式,3,cg_specialist_department_tc_competition_awards,900000,main_venue
+CKDKA,コスプレコンテスト アピールタイム,3,cosplay_contest_appeal_time,900000,main_venue
+BIHDF,文化祭フリーステージ,3,cultural_festival_free_stage,900000,main_venue
+EDEGP,コスプレコンテスト 表彰式,3,cosplay_contest_award_ceremony,900000,main_venue
+TDBQT,ビンゴ大会,3,bingo_tournament,900000,main_venue
+UGGOH,チャリティー餅つきイベント,1,charity_mochi_pounding_event,900000,sub_venue
+LKNSB,HAPPY☆MUSIC ライブイベント,3,happy_music_live_event,900000,sub_venue
+DEQCK,ベビーカステラ屋さん,1,baby_castella_shop,900000,food_and_drink
+HCIEI,ポップコーン Presented by さざなみ開発,1,popcorn_presented_by_sazanami_development,900000,food_and_drink
+AXHIC,餃子の平野,1,gyoza_no_hirano,900000,food_and_drink
+IBGGN,焼鳥風月(やちょうふうげつ),1,yakitori_fugetsu,900000,food_and_drink
+WIDDA,鳥頂点(うちょうてん),1,bird_summit,900000,food_and_drink
+REOBK,ぐるぐるポテト,1,spiral_potato,900000,food_and_drink
+QDZPV,とらいでんとドリンクスタンド,1,trident_drink_stand,900000,food_and_drink
+GKIDL,CG 作品展示・上映,8,cg_art_exhibition_and_screening,900000,exhibition
+EEFBA,決闘！召喚の頂,7,duel_summoners_peak,900000,match
+ACNDF,スパーキングゼロ！大会,7,sparking_zero_tournament,900000,match
+DRFHE,大乱闘スマッシュブラザーズ SPECIAL ゲーム化最強決定戦,7,super_smash_bros_special_game_decisive_battle,900000,match
+EUXFD,ストリートファイター６ トーナメント大会,7,street_fighter_6_tournament,900000,match
+CUIVE,ポケフェスティバス,7,poke_festival,900000,match
+FMDBD,デュエランド,7,duel_land,900000,match
+UAQBE,百科王学園,6,encyclopedia_king_academy,900000,amusement
+HQYHU,ショットガンルーレット,6,shotgun_roulette,900000,amusement
+XBGIH,Game & Sip Studio (GS^2),6,game_and_sip_studio_gs2,900000,amusement
+AMEOC,めいどりんく とらいでんと店,6,maidrink_trident_shop,900000,amusement
+QZHXD,レトロゲームスタジアム,6,retro_game_stadium,900000,amusement
+OABDD,たのしい射的,6,fun_shooting_gallery,900000,amusement
+HHDHA,ひもくじ,6,string_lottery,900000,amusement
+FFQAM,GT卒業制作展示,5,gt_graduation_project_exhibition,900000,exhibition
+GFBOI,ゲーム学科国際交流作品展示,5,game_department_international_exhibition,900000,exhibition
+FMGFC,GameLab::PlaySpace,5,gamelab_play_space,900000,exhibition
+HOGII,さざなみ開発,5,sazanami_development,900000,exhibition
+DBKDJ,謎解き,4,puzzle_solving,900000,executive_committee
+BEDFG,ゲーム広場,4,game_square,900000,executive_committee
+BHLWZ,キッキングスナイパー,4,kicking_sniper,900000,executive_committee
+AAEIG,蒲公英 & CRAFTCUBE,3,dandelion_and_craftcube,900000,merchandise
+FHEHB,ワンコイン占い,3,one_coin_fortune_telling,900000,merchandise
+VVAUH,チーム出the印,0,team_print_the,900000,merchandise
+DEBUG1,デバッグブース1,99,debug_booth_1,900000,debug
+DEBUG2,デバッグブース2,99,debug_booth_2,900000,debug
+DEBUG4,デバッグブース3,99,debug_booth_3,900000,debug
+DEBUG4,デバッグブース4,99,debug_booth_4,900000,debug
