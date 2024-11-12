@@ -31,6 +31,9 @@ async function getAllBroadcastWithCursorPagination(cursorId: string | null, limi
     orderBy: {
       id: 'desc', // createdAtを使ってもいいけど、cuidも10000レコード/ミリ秒までならソート可能性が保たれるので
     },
+    include: {
+      booth: true
+    },
     take: limit,
   });
 }
