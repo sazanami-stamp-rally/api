@@ -39,6 +39,7 @@ model Broadcast {
   body       String
   created_at DateTime @default(now())
   booth_id   String
+  type       String @default("common")
   booth      Booth    @relation(fields: [booth_id], references: [id])
 }
 
