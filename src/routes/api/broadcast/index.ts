@@ -2,6 +2,7 @@ import parsePagination from "@src/routes/middlewares/pagination";
 import { createBroadcast, getAllBroadcast, getAllBroadcastWithCursorPagination } from "@src/services/broadcast";
 import { isCorrectBoothPasscode } from "@src/utils/isCorrectBoothPasscode";
 import { Router } from "express";
+import { type } from "os";
 
 const router = Router();
 
@@ -13,6 +14,7 @@ router.get('/all', (req, res) => {
   });
 });
 
+// TODO: Typeを指定できるようにする
 router.get('/', parsePagination, async (req, res) => {
   const pagination = req.pagination;
   if (!pagination) {
@@ -58,7 +60,7 @@ router.post('/', async (req, res) => {
     return;
   }
 
-  createBroadcast(object.boothId, object.title, object.body).then(() => {
+  createBroadcast(object.boothId, object.title, object.body, object.type).then(() => {
     res.status(200).json({
       message: 'Broadcast created'
     });
