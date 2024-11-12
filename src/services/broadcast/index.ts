@@ -16,11 +16,16 @@ async function getAllBroadcast() {
   return await prisma.broadcast.findMany();
 }
 
-async function getAllBroadcastWithCursorPagination(cursorId: string | null, limit: number) {
+async function getAllBroadcastWithCursorPagination(cursorId: string | null, limit: number, type: string) {
   return await prisma.broadcast.findMany({
     ...(cursorId && {
       cursor: {
         id: cursorId
+      }
+    }),
+    ...(type && {
+      where: {
+        type
       }
     }),
     orderBy: {
