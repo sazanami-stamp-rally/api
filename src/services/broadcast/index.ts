@@ -1,11 +1,12 @@
 import prisma from "@src/prisma";
 
-async function createBroadcast(boothId: string, title: string, body: string) {
+async function createBroadcast(boothId: string, title: string, body: string, type: string) {
   return await prisma.broadcast.create({
     data: {
       booth_id: boothId,
       title,
       body,
+      type
     },
   });
 }
