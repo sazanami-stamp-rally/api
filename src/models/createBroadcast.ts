@@ -1,7 +1,7 @@
 interface CreateBroadcastRequest {
   boothId: string;
   passcode: string;
-  category: string;
+  type: string;
   title: string;
   body: string;
 }
