@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 
 export default function parsePagination(req: Request, _res: Response, next: NextFunction) {
   if (!(req.query.page || req.query.from) && req.query.limit) {
+    req.pagination = undefined;
     next();
   }
 
