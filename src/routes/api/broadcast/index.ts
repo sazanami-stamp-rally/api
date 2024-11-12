@@ -1,3 +1,4 @@
+import { BroadcastResponse } from "@src/models/broadcastResponse";
 import parsePagination from "@src/routes/middlewares/pagination";
 import { createBroadcast, getAllBroadcast, getAllBroadcastWithCursorPagination } from "@src/services/broadcast";
 import { isCorrectBoothPasscode } from "@src/utils/isCorrectBoothPasscode";
@@ -32,7 +33,15 @@ router.get('/', parsePagination, async (req, res) => {
     pagination.limit)
     .then((broadcasts) => {
       return res.status(200).json({
-        broadcasts,
+        broadcasts: broadcasts.map(broadcast => {
+          return {
+            title: broadcast.title,
+            body: broadcast.body,
+            type: broadcast.type,
+            author: broadcast.booth.display_name,
+            timestamp: broadcast.created_at
+          } as BroadcastResponse
+        }),
         cursor: broadcasts.length === 0 ? null : broadcasts[broadcasts.length - 1].id // クライアントに処理させてもいい気はする
       });
     });
