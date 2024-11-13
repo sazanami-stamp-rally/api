@@ -17,15 +17,11 @@ ARG DATABASE_URL
 
 ENV DATABASE_URL=$DATABASE_URL
 
-RUN echo $DATABASE_URL
-
-RUN echo test
-
-# マイグレーションを実行
-RUN npx prisma migrate deploy
-
-# seed
-RUN npm run seed
+# # マイグレーションを実行
+# RUN npx prisma migrate deploy
+#
+# # seed
+# RUN npm run seed
 
 # アプリケーションを起動する
 CMD ["npm", "run", "start"]
