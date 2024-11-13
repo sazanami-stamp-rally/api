@@ -1,0 +1,44 @@
+id,display_name,floor,category,flags,passcode
+opening_ceremony,オープニングセレモニー,3,main_venue,,HBDFE
+cg_specialist_department_tc_competition_awards,CGスペシャリスト学科 TCコンペ表彰式,3,main_venue,,IYDGT
+cosplay_contest_appeal_time,コスプレコンテスト アピールタイム,3,main_venue,,WGFWA
+cultural_festival_free_stage,文化祭フリーステージ,3,main_venue,,RZQXB
+cosplay_contest_award_ceremony,コスプレコンテスト 表彰式,3,main_venue,,KBTFR
+bingo_tournament,ビンゴ大会,3,main_venue,,EIIPM
+charity_mochi_pounding_event,チャリティー餅つきイベント,1,sub_venue,,HVWJB
+happy_music_live_event,HAPPY☆MUSIC ライブイベント,3,sub_venue,,PEVAA
+baby_castella_shop,ベビーカステラ屋さん,1,food_and_drink,,BOQVB
+popcorn_presented_by_sazanami_development,ポップコーン Presented by さざなみ開発,1,food_and_drink,,THKCL
+gyoza_no_hirano,餃子の平野,1,food_and_drink,,MBFQW
+yakitori_fugetsu,焼鳥風月(やちょうふうげつ),1,food_and_drink,,ACHPK
+bird_summit,鳥頂点(うちょうてん),1,food_and_drink,,NSFDB
+spiral_potato,ぐるぐるポテト,1,food_and_drink,,QLBWU
+trident_drink_stand,とらいでんとドリンクスタンド,1,food_and_drink,,QFEGC
+cg_art_exhibition_and_screening,CG 作品展示・上映,8,exhibition,,VHCAG
+duel_summoners_peak,決闘！召喚の頂,7,match,,XBCEE
+sparking_zero_tournament,スパーキングゼロ！大会,7,match,,FIRIE
+super_smash_bros_special_game_decisive_battle,大乱闘スマッシュブラザーズ SPECIAL ゲーム化最強決定戦,7,match,,GFFCN
+street_fighter_6_tournament,ストリートファイター６ トーナメント大会,7,match,,JQIFJ
+poke_festival,ポケフェスティバス,7,match,,VUBMS
+duel_land,デュエランド,7,match,,CEAHH
+encyclopedia_king_academy,百科王学園,6,amusement,,YABKL
+shotgun_roulette,ショットガンルーレット,6,amusement,,HTWPI
+game_and_sip_studio_gs2,Game & Sip Studio (GS^2),6,amusement,,DFICD
+maidrink_trident_shop,めいどりんく とらいでんと店,6,amusement,,XUAGE
+retro_game_stadium,レトロゲームスタジアム,6,amusement,,HWKIH
+fun_shooting_gallery,たのしい射的,6,amusement,,CHLNA
+string_lottery,ひもくじ,6,amusement,,HGCCI
+gt_graduation_project_exhibition,GT卒業制作展示,5,exhibition,,CUBBB
+game_department_international_exhibition,ゲーム学科国際交流作品展示,5,exhibition,,AYUYL
+gamelab_play_space,GameLab::PlaySpace,5,exhibition,,GXKGH
+sazanami_development,さざなみ開発,5,exhibition,,FUCBD
+puzzle_solving,謎解き,4,executive_committee,,EBBHJ
+game_square,ゲーム広場,4,executive_committee,,GACYN
+kicking_sniper,キッキングスナイパー,4,executive_committee,,AIKWF
+dandelion_and_craftcube,蒲公英 & CRAFTCUBE,3,merchandise,,GVBQI
+one_coin_fortune_telling,ワンコイン占い,3,merchandise,,PQAHA
+team_print_the,チーム出the印,0,merchandise,,FICGA
+debug_booth_1,デバッグブース1,99,debug,,DEBUG
+debug_booth_2,デバッグブース2,99,debug,,DEBUG
+debug_booth_3,デバッグブース3,99,debug,,DEBUG
+debug_booth_4,デバッグブース4,99,debug,,DEBUG
