@@ -1,5 +1,5 @@
 # ベースイメージとして軽量なNode 18を使用
-FROM node:18-alpine
+FROM node:22-alpine
 
 # 作業ディレクトリを設定
 WORKDIR /app
@@ -12,6 +12,10 @@ RUN npm install --only=production
 
 # ソースコードをコピー
 COPY . .
+
+ARG DATABASE_URL
+
+ENV DATABASE_URL=$DATABASE_URL
 
 # マイグレーションを実行
 RUN npx prisma migrate deploy
