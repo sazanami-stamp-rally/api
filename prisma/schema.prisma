@@ -83,6 +83,6 @@ model Achievement {
   user           User     @relation(fields: [user_id], references: [id])
 }
 
-model Meta {
+model Seeded {
   id        String @id
 }
