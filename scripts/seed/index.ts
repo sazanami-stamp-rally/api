@@ -3,10 +3,17 @@ import { seed as checkpoint } from './scripts/checkpoint';
 import { seed as checkpointBooth } from './scripts/checkpoint_booth';
 import { seed as user } from './scripts/user';
 
+import { isDbSeeded } from './isDbSeeded';
+
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
 const rootPath = dirname(fileURLToPath(import.meta.url));
+
+if (await isDbSeeded()) {
+  console.log('Database is already seeded');
+  process.exit(0);
+}
 
 // booth関数を呼び出す
 await booth(rootPath);
