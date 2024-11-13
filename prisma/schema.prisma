@@ -85,5 +85,4 @@ model Achievement {
 
 model Meta {
   id        String @id @default(cuid())
-  is_seeded Boolean @default(false)
 }
