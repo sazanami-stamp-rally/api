@@ -13,7 +13,11 @@ RUN npm install --only=production
 # ソースコードをコピー
 COPY . .
 
-RUN npx prisma generate
+# マイグレーションを実行
+RUN npx prisma migrate deploy
+
+# seed
+RUN npm run seed
 
 # アプリケーションを起動する
 CMD ["npm", "run", "start"]
