@@ -1,12 +1,12 @@
-import { Meta, PrismaClient } from "@prisma/client";
+import { Seeded, PrismaClient } from "@prisma/client";
 
 async function isDbSeeded(): Promise<boolean> {
 
   const prisma = new PrismaClient();
 
-  return prisma.meta.findFirst().then((meta: Meta | null) => {
+  return prisma.seeded.findFirst().then((seeded: Seeded | null) => {
     prisma.$disconnect();
-    return !!meta;
+    return !!seeded;
   });
 }
 
