@@ -82,3 +82,8 @@ model Achievement {
   progress       Int?     @default(0)
   user           User     @relation(fields: [user_id], references: [id])
 }
+
+model Meta {
+  id        String @id @default(cuid())
+  is_seeded Boolean @default(false)
+}
