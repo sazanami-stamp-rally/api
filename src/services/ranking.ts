@@ -12,7 +12,8 @@ async function getUserRanking() {
             include: {
                 _count: {
                     select: { Checkin: true }
-                }
+                },
+                Acheivement: true
             },
             orderBy: {
                 Checkin: {
