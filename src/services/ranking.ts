@@ -37,7 +37,7 @@ async function getUserRanking() {
           userId: user.id,
           userName: user.display_name || 'Unknown',
           score: user._count?.Checkin || 0,
-          achievements: user.Achievement.map((achievement) => achievement.id) || []
+          achievements: user.Achievement.map((achievement) => achievement.achievement_id) || []
         });
       } else {
         ranking.push({
@@ -45,7 +45,7 @@ async function getUserRanking() {
           userId: user.id,
           userName: user.display_name || 'Unknown',
           score: user._count?.Checkin || 0,
-          achievements: user.Achievement.map((achievement) => achievement.id) || []
+          achievements: user.Achievement.map((achievement) => achievement.achievement_id) || []
         });
       }
 
