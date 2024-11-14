@@ -1,24 +1,25 @@
 interface RankingBaseItem {
-    rank: number;
-    score: number;
+  rank: number;
+  score: number;
 }
 
 interface UserRankingBaseItem extends RankingBaseItem {
-    userId: string;
-    userName: string;
+  userId: string;
+  userName: string;
 }
 
 interface UserRankingItem extends UserRankingBaseItem {
-    // additional fields
+  // achievements(任意)
+  achievements?: string[];
 }
 
 interface BoothRankingBaseItem extends RankingBaseItem {
-    boothId: string;
-    boothName: string;
+  boothId: string;
+  boothName: string;
 }
 
 interface BoothRankingItem extends BoothRankingBaseItem {
-    // additional fields
+  // additional fields
 }
 
 export { UserRankingItem, BoothRankingItem };
