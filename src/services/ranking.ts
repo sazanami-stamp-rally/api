@@ -36,7 +36,8 @@ async function getUserRanking() {
           rank: ranking[i - 1].rank, // 前のユーザーと同じ順位
           userId: user.id,
           userName: user.display_name || 'Unknown',
-          score: user._count?.Checkin || 0
+          score: user._count?.Checkin || 0,
+          achievements: user.Acheivement.map((achievement) => achievement.id)
         });
       } else {
         ranking.push({
