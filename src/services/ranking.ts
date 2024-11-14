@@ -13,7 +13,7 @@ async function getUserRanking() {
         _count: {
           select: { Checkin: true }
         },
-        Acheivement: true
+        Achievement: true
       },
       orderBy: {
         Checkin: {
@@ -37,14 +37,15 @@ async function getUserRanking() {
           userId: user.id,
           userName: user.display_name || 'Unknown',
           score: user._count?.Checkin || 0,
-          achievements: user.Acheivement.map((achievement) => achievement.id)
+          achievements: user.Achievement.map((achievement) => achievement.id) || []
         });
       } else {
         ranking.push({
           rank: currentRank,
           userId: user.id,
           userName: user.display_name || 'Unknown',
-          score: user._count?.Checkin || 0
+          score: user._count?.Checkin || 0,
+          achievements: user.Achievement.map((achievement) => achievement.id) || []
         });
       }
 

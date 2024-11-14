@@ -20,7 +20,7 @@ model User {
   is_activated Boolean       @default(false)
   Checkin      Checkin[]
   Cooldown     Cooldown[]
-  Acheivement  Achievement[]
+  Achievement  Achievement[]
 }
 
 model Booth {
