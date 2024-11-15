@@ -35,6 +35,7 @@ router.get('/', parsePagination, async (req, res) => {
       return res.status(200).json({
         broadcasts: broadcasts.map(broadcast => {
           return {
+            id: broadcast.id,
             title: broadcast.title,
             body: broadcast.body,
             type: broadcast.type,

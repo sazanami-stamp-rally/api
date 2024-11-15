@@ -1,4 +1,5 @@
 interface BroadcastResponse {
+  id: string;
   title: string;
   body: string;
   type: string;
