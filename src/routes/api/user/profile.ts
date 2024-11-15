@@ -41,17 +41,17 @@ router.get('/displayName', hasUserId, async (req: Request, res: Response) => {
 // セキュリティフラグとかを設定
 router.post('/flag', hasUserId, async (req: Request, res: Response) => {
   // hasUserIdミドルウェアを挟んでいる場合, req.userIdは存在することが保証されている
-  if (!req.body.allowShowOnSignage && !req.body.allowUseInBooth) {
-    const resp = requiredFieldMissingResponse(["allowShowOnSignage", "allowUseInBooth"]) // かなり嘘(どっちかでいいので)
-    res.status(resp.statusCode).json(resp.body)
-  }
 
-  if (req.body.allowShowOnSignage) {
+  console.log(req.body);
+
+  if (req.body.allowShowOnSignage !== undefined) {
     setUserAllowShowOnSignage(req.userId!, req.body.allowShowOnSignage);
   }
-  if (req.body.allowUseInBooth) {
+  if (req.body.allowUseInBooth !== undefined) {
     setUserAllowUseInBooth(req.userId!, req.body.allowUseInBooth);
   }
+
+  res.status(200).json({ message: 'success' });
 });
 
 router.get('/flag', hasUserId, async (req: Request, res: Response) => {
