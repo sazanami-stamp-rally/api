@@ -73,4 +73,4 @@ async function getAllowUseInBooth(userId: string) {
   });
 }
 
-export { setUserDisplayName, getUserDisplayName };
+export { setUserDisplayName, getUserDisplayName, setUserAllowShowOnSignage, setUserAllowUseInBooth, getAllowShowOnSignage, getAllowUseInBooth };
