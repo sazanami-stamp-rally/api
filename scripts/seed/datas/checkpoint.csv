@@ -1,2 +1,16 @@
 id,display_name,floor,booth_id,cooldown_duration,category
 DEBUG_CP1,デバッグ用チェックポイント,1,,2000,debug
+CIBIJ,F56教室前,5,,900000,aisle
+XIHPI,F3ロビー自販機横,3,,900000,aisle
+HBIGJ,F36教室前はしら裏,3,,900000,aisle
+UVAFJ,F2階段出入口,2,,900000,aisle
+UFXAN,BF06教室裏,0,,900000,aisle
+BCGAD,F54エレベータ側出入口,5,,900000,aisle
+DFBFX,F4男子トイレ前,4,,900000,aisle
+AYHII,F6 階段入口,6,,900000,aisle
+GDDHG,F51前,5,,900000,aisle
+FODHK,F1~B1らくがきコーナー,0,,900000,aisle
+HDSLJ,F1来客エレベータ左,1,,900000,aisle
+FLPGN,F32教室前,3,,900000,aisle
+AWLAE,F6 EV前左,6,,900000,aisle
+GAGIS,左エレベータ内,0,,900000,aisle
