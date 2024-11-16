@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "init": "npx prisma migrate deploy && npm run seed",
     "seed": "npx tsx scripts/seed/index.ts",
-    "seedAndStart": "npm run seed && npm run start"
+    "seedAndStart": "npx prisma generate && npm run seed && npm run start"
   },
   "author": "",
   "license": "MIT",
