@@ -3,7 +3,7 @@ import csv from 'csv-parser';
 import { User, PrismaClient } from '@prisma/client';
 
 export async function seed(rootPath: string): Promise<void> {
-  console.log('Seeding users...');
+  console.log('Seeding users1...');
   const prisma = new PrismaClient();
   const data = [] as User[];
 
@@ -14,7 +14,9 @@ export async function seed(rootPath: string): Promise<void> {
         data.push({
           id: row.id as string,
           display_name: null,
-          is_activated: false
+          is_activated: false,
+          allow_use_in_booth: false,
+          allow_show_on_signage: false
         });
       })
       .on('end', () => {
@@ -26,7 +28,7 @@ export async function seed(rootPath: string): Promise<void> {
   });
 
   await prisma.user.createMany({ data });
-  console.log('Seeding user completed!');
+  console.log('Seeding user1 completed!');
   await prisma.$disconnect();
 }
 

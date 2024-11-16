@@ -14,7 +14,9 @@ export async function seed(rootPath: string): Promise<void> {
         data.push({
           id: row.id as string,
           display_name: row.display_name as string,
-          is_activated: row.is_activated === 'TRUE'
+          is_activated: row.is_activated === 'TRUE',
+          allow_use_in_booth: false,
+          allow_show_on_signage: false
         });
       })
       .on('end', () => {
